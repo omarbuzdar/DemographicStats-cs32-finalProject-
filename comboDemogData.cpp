@@ -16,5 +16,6 @@ void comboDemogData::addDemogtoRegion(demogData *CD) {
     highSchoolUp += CD->getHSupCount() ;
     belowPoverty += CD->getBelowPovertyCount();
     population2014 += CD->getPop();
+    misc += CD->getMisc();
     numCombined++;
 }

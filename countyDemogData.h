@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include "demogData.h"
+#include "MiscellaneousData.h"
 
 using namespace std;
 
@@ -14,8 +15,8 @@ class countyDemogData : public demogData {
   public:
     countyDemogData(string inN, string inS, double in65, double in18,
         double in5, double inBA, double inHS,
-        double belowPov, int totalPop14) : demogData{inS, in65, in18,
-            in5, inBA, inHS, belowPov, totalPop14},
+        double belowPov, miscellaneousData MD, int totalPop14) : demogData(inS, in65, in18,
+            in5, inBA, inHS, belowPov, totalPop14, MD),
             countyName(inN) {}
 
     string getCounty() const { return countyName; }

@@ -100,7 +100,7 @@ void statTool::computeStatsDemogRegionData(Visitor* theRegions, statGatherer* fi
 
 /* compute statistics for mixed data, demographic and hospital
 expects, the region, a statGatherer and function pointers for the methods to fill in */
-void statTool::computeStatsMixRegionData(const Visitor* theRegions, statGatherer* fillArrays, 
+void statTool::computeStatsMixRegionData(Visitor* theRegions, statGatherer* fillArrays, 
         double (demogData::*f1)() const, double (comboHospitalData::*f2)() const) {
 
     vector<double> dataX;

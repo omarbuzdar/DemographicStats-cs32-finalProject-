@@ -28,7 +28,7 @@ public:
   static void computeStatsHospRegionData(Visitor* theRegions, statGatherer* fillArrays,
                                 double (hospitalData::*f1)() const, double(hospitalData::*f2)() const,
                                 int (hospitalData::*f3)() const, int (hospitalData::*f4)() const);
-  static void computeStatsMixRegionData(const Visitor* theRegions, statGatherer* fillArrays, 
+  static void computeStatsMixRegionData(Visitor* theRegions, statGatherer* fillArrays, 
         double (demogData::*f1)() const, double (comboHospitalData::*f2)() const);
 
 };

@@ -81,21 +81,39 @@ shared_ptr<demogData> readCSVLineDemog(std::string theLine) {
     for (int i=0; i < 9; i++)
         getField(ss);
 
-    double belowPoverty = stod(getField(ss))/100;
+    double belowPoverty = (stod(getField(ss)) / 100.0);
+    //miscellaneous data begins
+    int buildingPermits = stoi(getField(ss));
+    double popForeign = (stod(getField(ss)) / 100.0);
+    double landArea = stod(getField(ss));
+    double popOtherLanguage = (stod(getField(ss)) / 100.0);
+    double popSameHouse = (stod(getField(ss)) / 100.0);
+    int manufacturerShipments = stoi(getField(ss));
+    double meanCommuting = stod(getField(ss));
+    double popFemale = (stod(getField(ss)) / 100.0);
+    int popVeterans = stoi(getField(ss));
 
     //now skip over some data 
-    for (int i=0; i < 10; i++)
-        getField(ss);
+    getField(ss);
 
     int totalPop2014 = stoi(getField(ss));
 
+    popForeign *= totalPop2014;
+    popOtherLanguage  *= totalPop2014;
+    popSameHouse *= totalPop2014;
+    popFemale *= totalPop2014;
+    
+    miscellaneousData miscData(popFemale, popForeign, popSameHouse, meanCommuting,
+                               landArea, popOtherLanguage, popVeterans, buildingPermits,
+                               manufacturerShipments);    
     
     return make_shared<countyDemogData>(name, state, round(popOver65*totalPop2014), 
             round(popUnder18*totalPop2014),
             round(popUnder5*totalPop2014), 
             round(bachelorDegreeUp*totalPop2014), 
             round(highSchoolUp*totalPop2014), 
-            round(belowPoverty*totalPop2014), 
+            round(belowPoverty*totalPop2014),
+            miscData, 
             totalPop2014);
 }
 
@@ -117,7 +135,7 @@ shared_ptr<hospitalData> readCSVLineHospital(std::string theLine) {
 }
 
 // Rewrite as one method - maybe replace typeFlag with functor on readline
-void read_csv(vector<shared_ptr<placeData>> &pileOfData, std::string filename, typeFlag fileType) {
+void read_csv(vector<shared_ptr<placeData> > &pileOfData, std::string filename, typeFlag fileType) {
     //the actual data
     //std::vector<shared_ptr<placeData>> theData;
 
