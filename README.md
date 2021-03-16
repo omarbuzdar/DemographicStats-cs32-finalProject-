@@ -1,5 +1,5 @@
 # cs32-finalProject
-Omar Buzdar, Nicholas Wenstad, Albert Tran, Zach Mondin
+Omar Buzdar, Nicholas Wenstad, Albert Tran, Zack Mondin
 
 Results on correlation between popOver65 and veterans
 State data for Pop over 65 and veterans: 
